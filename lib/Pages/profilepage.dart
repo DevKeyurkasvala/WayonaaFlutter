@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:wayonaacrm/Pages/app.drawer.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Profile'),
       ),
       drawer: AppDrawer(
-        selectedIndex: _selectedIndex,
+        selectedIndex: 1, // Set selectedIndex to 1 to highlight the Profile menu item
         onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
           // You can add navigation logic here if needed
         },
       ),
@@ -31,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome to My App!',
+              'Welcome to your Profile!',
               style: TextStyle(fontSize: 24),
             ),
             SizedBox(height: 20),
@@ -39,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 // Add your button action here
               },
-              child: Text('Logout'),
+              child: Text('Edit Profile'),
             ),
           ],
         ),
