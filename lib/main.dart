@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:wayonaacrm/Pages/dashboard.dart';
-import 'package:wayonaacrm/Pages/loginpage.dart';
-import 'package:wayonaacrm/Pages/profilepage.dart';
+import 'package:wayonaacrm/Pages/LoginPage.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
 
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
-
-   const MyApp({Key? key, this.isLoggedIn = false}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,10 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: isLoggedIn ? const MyHomePage() : const MyLoginPage(),
+      home: LoginPage(),
       routes: {
-        '/dashboard': (context) => const MyHomePage(),
-         '/profile': (context) => const ProfilePage(),
+        '/dashboard': (context) => LoginPage(),
       },
     );
   }
